@@ -19,12 +19,18 @@ if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
   then
     chmod +x $(dirname $0)/git/config.sh
     ./$(dirname $0)/git/config.sh
+
+    chmod +x $(dirname $0)/openssh/config.sh
+    ./$(dirname $0)/openssh/config.sh
 fi
 
 if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
   then
     chmod +x $(dirname $0)/git/install.sh
     ./$(dirname $0)/git/install.sh
+
+    chmod +x $(dirname $0)/openssh/install.sh
+    ./$(dirname $0)/openssh/install.sh
 fi
 
 exit 0
