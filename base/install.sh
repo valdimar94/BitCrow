@@ -8,7 +8,12 @@ if [ "$install" != "y" ]
     exit 0
 fi
 
-chmod +x $(dirname $0)/../$1/install.sh
-./$(dirname $0)/../$1/install.sh
+file=$(dirname $0)/../$1/configured.config
+configured=$([ -f $file ] && cat $file || echo "n")
+if [ "$configured" == "y" ]
+  then
+    chmod +x $(dirname $0)/../$1/install.sh
+    ./$(dirname $0)/../$1/install.sh
+fi
 
 exit 0
