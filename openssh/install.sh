@@ -2,12 +2,6 @@
 
 set -e
 
-install=$(cat $(dirname $0)/install.config)
-if [ "$install" == "n" ]
-  then
-    exit 0
-fi
-
 sudo apt-get install openssh-server
 
 port=$(cat $(dirname $0)/port.config)
@@ -62,6 +56,6 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 UsePAM yes
 _EOF_"
 
-sudo restart ssh || sudo systemctl restart ssh
+sudo systemctl restart ssh || sudo restart ssh
 
 exit 0

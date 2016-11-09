@@ -34,19 +34,6 @@ Example config.sh file:
 
 set -e
 
-install="invalid"
-echo "Would you like to install git (y/n)?"
-until [ \( "$install" == "y" \) -o \( "$install" == "n" \) ]
-  do
-    read install
-done
-echo "$install" > $(dirname $0)/install.config
-
-if [ "$install" == "n" ]
-  then
-    exit 0
-fi
-
 # START OF CONFIGURATIONS FOR EXAMPLE APP (Your Code Here)
 
 echo "Here you can ask the user for configuration information?"
@@ -66,12 +53,6 @@ Example install.sh file:
 #!/bin/bash
 
 set -e
-
-install=$(cat $(dirname $0)/install.config)
-if [ "$install" == "n" ]
-  then
-    exit 0
-fi
 
 # START OF INSTALLATION FOR EXAMPLE APP (Your Code Here)
 
@@ -100,11 +81,14 @@ if [ "$#" -ne 1 ]
 fi
 
 if [[ $EUID -eq 0 ]]; then
-   echo "This script must not run as root" 1>&2
+   echo "This script must not run as root"
    exit 1
 fi
 
 sudo echo "Starting Script!"
+
+chmod +x $(dirname $0)/base/config.sh
+chmod +x $(dirname $0)/base/install.sh
 
 if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
   then
@@ -112,8 +96,7 @@ if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
 
     # START EXAMPLE APP CONFIG (Your Code Here)
 
-    chmod +x $(dirname $0)/exampleapp/config.sh
-    ./$(dirname $0)/exampleapp/config.sh
+    ./$(dirname $0)/base/config.sh exampleapp
 
     # END EXAMPLE APP CONFIG
 fi
@@ -124,8 +107,7 @@ if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
 
     # START EXAMPLE APP INSTALL (Your Code Here)
 
-    chmod +x $(dirname $0)/git/install.sh
-    ./$(dirname $0)/git/install.sh
+    ./$(dirname $0)/base/install.sh exampleapp
 
     # END EXAMPLE APP INSTALL
 fi

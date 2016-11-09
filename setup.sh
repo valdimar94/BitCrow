@@ -9,28 +9,25 @@ if [ "$#" -ne 1 ]
 fi
 
 if [[ $EUID -eq 0 ]]; then
-   echo "This script must not run as root" 1>&2
+   echo "This script must not run as root"
    exit 1
 fi
 
 sudo echo "Starting Script!"
 
+chmod +x $(dirname $0)/base/config.sh
+chmod +x $(dirname $0)/base/install.sh
+
 if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
   then
-    chmod +x $(dirname $0)/git/config.sh
-    ./$(dirname $0)/git/config.sh
-
-    chmod +x $(dirname $0)/openssh/config.sh
-    ./$(dirname $0)/openssh/config.sh
+    ./$(dirname $0)/base/config.sh git
+    ./$(dirname $0)/base/config.sh openssh
 fi
 
 if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
   then
-    chmod +x $(dirname $0)/git/install.sh
-    ./$(dirname $0)/git/install.sh
-
-    chmod +x $(dirname $0)/openssh/install.sh
-    ./$(dirname $0)/openssh/install.sh
+    ./$(dirname $0)/base/install.sh git
+    ./$(dirname $0)/base/install.sh openssh
 fi
 
 exit 0
