@@ -85,6 +85,13 @@ if [[ $EUID -eq 0 ]]; then
    exit 1
 fi
 
+if [[ "$1" != "all" && "$1" != "config" && "$1" != "install" ]]
+  then
+    echo "Invalid parameter"
+    echo "Usage: ./setup.sh <all/config/install>"
+    exit 1
+fi
+
 sudo echo "Starting Script!"
 
 chmod +x $(dirname $0)/base/config.sh
@@ -103,6 +110,9 @@ fi
 
 if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
   then
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+
     # OTHER APPS
 
     # START EXAMPLE APP INSTALL (Your Code Here)
@@ -110,7 +120,11 @@ if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
     ./$(dirname $0)/base/install.sh exampleapp
 
     # END EXAMPLE APP INSTALL
+
+    sudo apt -y autoremove
 fi
+
+echo "Script finished successfully!"
 
 exit 0
 ~~~~
