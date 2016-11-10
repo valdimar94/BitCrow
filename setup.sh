@@ -20,6 +20,7 @@ chmod +x $(dirname $0)/base/install.sh
 
 if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
   then
+    ./$(dirname $0)/base/config.sh atom
     ./$(dirname $0)/base/config.sh chrome
     ./$(dirname $0)/base/config.sh git
     ./$(dirname $0)/base/config.sh openssh
@@ -27,6 +28,7 @@ fi
 
 if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
   then
+    ./$(dirname $0)/base/install.sh atom
     ./$(dirname $0)/base/install.sh chrome
     ./$(dirname $0)/base/install.sh git
     ./$(dirname $0)/base/install.sh openssh
