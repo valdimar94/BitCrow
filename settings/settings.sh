@@ -2,21 +2,42 @@
 
 set -e
 
-echo "Would you like remove ubuntu amazon(y/n)?"
+echo "Would you like remove ubuntu amazon launcher(y/n)?"
 read answer
 if [ "$answer" == "y" ]
   then
-    sudo rm /usr/share/applications/ubuntu-amazon-default.desktop
+    sudo rm -rf /usr/share/applications/ubuntu-amazon-default.desktop
 fi
 
-echo "Would you like remove firefox(y/n)?"
+echo "Would you like remove UXTerm launcher(y/n)?"
+read answer
+if [ "$answer" == "y" ]
+  then
+    sudo rm -rf /usr/share/applications/debian-uxterm.desktop
+fi
+
+echo "Would you like remove XTerm launcher(y/n)?"
+read answer
+if [ "$answer" == "y" ]
+  then
+    sudo rm -rf /usr/share/applications/debian-xterm.desktop
+fi
+
+echo "Would you like uninstall firefox(y/n)?"
 read answer
 if [ "$answer" == "y" ]
   then
     sudo apt-get -y remove firefox
 fi
 
-echo "Would you like remove libreoffice(y/n)?"
+echo "Would you like uninstall thunderbird(y/n)?"
+read answer
+if [ "$answer" == "y" ]
+  then
+    sudo apt-get -y remove thunderbird
+fi
+
+echo "Would you like uninstall libreoffice(y/n)?"
 read answer
 if [ "$answer" == "y" ]
   then
