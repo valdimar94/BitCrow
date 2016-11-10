@@ -18,8 +18,8 @@ If you have any suggestions as to what should be included please add a feature
 request in our [issues tracker](https://github.com/IronPeak/BitCrow/issues).
 
 ## Example Script
-Making an installation script is easy simply add a folder in the project
-directory with the same way as the application you are installing.
+Making an installation script is easy, simply add a folder in the project
+directory with the same name as the application you are installing.
 ~~~~
 mkdir exampleapp
 ~~~~

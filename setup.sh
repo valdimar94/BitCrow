@@ -35,6 +35,7 @@ if [ \( "$1" == "config" \) -o \( "$1" == "all" \) ]
     ./$(dirname $0)/base/config.sh monodevelop
     ./$(dirname $0)/base/config.sh nodejs
     ./$(dirname $0)/base/config.sh openssh
+    ./$(dirname $0)/base/config.sh sublime
 fi
 
 if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
@@ -50,6 +51,7 @@ if [ \( "$1" == "install" \) -o \( "$1" == "all" \) ]
     ./$(dirname $0)/base/install.sh monodevelop
     ./$(dirname $0)/base/install.sh nodejs
     ./$(dirname $0)/base/install.sh openssh
+    ./$(dirname $0)/base/install.sh sublime
 
     sudo apt -y autoremove
 fi
