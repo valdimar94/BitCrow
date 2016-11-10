@@ -2,7 +2,7 @@
 
 set -e
 
-sudo apt-get install openssh-server
+sudo apt-get -y install openssh-server
 
 port=$(cat $(dirname $0)/port.config)
 
