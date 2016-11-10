@@ -21,6 +21,7 @@ _EOF_"
 sudo chmod +x /usr/share/applications/franz.desktop
 if [ "$startup" == "true" ]
   then
+    sudo mkdir -p /home/"$USER"/.config/autostart/
     sudo cp /usr/share/applications/franz.desktop /home/"$USER"/.config/autostart/
     echo "Added franz to startup applications"
 fi
