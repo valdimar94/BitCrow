@@ -8,9 +8,10 @@ scripts and configuring the project to suit your needs.
 
 Running the setup script:
 ~~~~
-./setup.sh config  // To configure the installers.
-./setup.sh install // Running the installers using configurations.
-./setup.sh all     // Run config then install.
+./setup.sh config   // To configure the installers.
+./setup.sh install  // Running the installers using configurations.
+./setup.sh settings // Open Ubuntu's settings windows for fast configuration.
+./setup.sh all      // Run config, install and then settings.
 ~~~~
 
 ## Getting In Touch
