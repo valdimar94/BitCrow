@@ -15,8 +15,8 @@ if [ ! -f ~/.ssh/id_rsa ]
     ssh-keygen -t rsa -b 4096 -C "$email"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
+    gedit ~/.ssh/id_rsa.pub &
     sensible-browser https://github.com/settings/keys
-    gedit ~/.ssh/id_rsa.pub
 fi
 
 installgitlfs=$(cat $(dirname $0)/installgitlfs.config)
